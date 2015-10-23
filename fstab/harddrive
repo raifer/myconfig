@@ -1,0 +1,10 @@
+# data
+/dev/sdb3       /media/data     ntfs-3g    rw,user,auto,uid=raifer,gid=raifer,umask=113,dmask=002  0       0
+
+#mega data
+/dev/sda1       /media/mega     ntfs-3g    rw,user,auto,uid=raifer,gid=raifer,umask=113,dmask=002  0       0
+
+# book
+UUID=43CFA72C03970499        /media/book      ntfs-3g    rw,user,auto,uid=raifer,gid=usb,umask=113,dmask=002  0       0
+UUID=ecc9fddb-3d05-441d-9cf7-745ff366d047       /media/look      ext4    rw,user,auto  0       0
+
