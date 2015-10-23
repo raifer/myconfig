@@ -1,0 +1,22 @@
+[user]
+	name = Mathieu Barbe
+	email = mat.barbe@gmail.com
+
+[push]
+	default = simple
+
+[alias]
+ amend = commit --amend
+ st = status -s -uno
+sta = status -s  
+ ci = commit
+ co = checkout
+ who = shortlog -sne
+ lg = log --relative-date --abbrev-commit
+ lgs = log --relative-date --abbrev-commit --name-status
+ lgl = log --relative-date --abbrev-commit --name-status -1
+ 
+
+
+
+
