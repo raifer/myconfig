@@ -1,0 +1,33 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+/dev/mapper/amoc--vg-root /               ext4    errors=remount-ro 0       1
+# /boot was on /dev/sda1 during installation
+UUID=65479e28-c626-485f-bb7b-8ccd5e8fb778 /boot           ext2    defaults        0       2
+/dev/mapper/amoc--vg-home /home           ext4    defaults        0       2
+/dev/mapper/amoc--vg-swap_1 none            swap    sw              0       0
+/dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
+
+# ssh fs home mb230245
+sshfs#mb230245@grenx03: /home/cea fuse comment=sshfs,user,exec,nodev,nosuid,rw,nosuid,noauto,reconnect,transform_symlinks,iDENTITYfILE=/HOME/MB230245/.SSH/ID_RSA,fsname=sshfs#mb230245@grenX03: 0 0
+
+# ssh fs LINC
+sshfs#mb230245@grenx03:/home/360.1.99-LINC /home/360.1.99-LINC/ fuse comment=sshfs,user,exec,nodev,nosuid,rw,umask=7,noauto,reconnect,transform_symlinks,iDENTITYfILE=/HOME/MB230245/.SSH/ID_RSA,fsname=sshfs#mb230245@grenX03:/home/360.1.99-LINC 0 0
+
+# ssh fs LINC 560
+sshfs#mb230245@grenx03:/home/560.1.99-LINC /home/560.1.99-LINC/ fuse comment=sshfs,user,exec,nodev,nosuid,rw,umask=7,noauto,reconnect,transform_symlinks,iDENTITYfILE=/HOME/MB230245/.SSH/ID_RSA,fsname=sshfs#mb230245@grenX03:/home/560.1.99-LINC 0 0
+
+
+# ssh fs Fusion
+sshfs#mb230245@grenx03:/home/360.75-FUSION /home/360.75-FUSION/ fuse comment=sshfs,user,exec,nodev,nosuid,rw,umask=7,noauto,reconnect,transform_symlinks,iDENTITYfILE=/HOME/MB230245/.SSH/ID_RSA,fsname=sshfs#mb230245@grenX03:/home/360.75-FUSION 0 0
+
+# nfs demo linco, home pi
+192.168.2.1:/home/pi/ /home/pi/ nfs defaults,user,noauto,noatime,intr 0 0
+
+
+# nfs pi rouge
+192.168.2.2:/home/pi/ /home/pired/ nfs defaults,user,noauto,noatime,intr 0 0
