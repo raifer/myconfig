@@ -1,0 +1,11 @@
+host pcs
+    hostname pcserveur
+
+Host pcserveur
+    ProxyCommand ssh -q barbem@depots.ensimag.fr nc %h 22
+    User barbem
+
+
+Host depots
+    HostName depots.ensimag.fr
+    User barbem
