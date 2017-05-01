@@ -19,10 +19,10 @@
 set autoindent
 
 ## Backup files to filename~.
-# set backup
+set backup
 
 ## The directory to put unique backup files in.
-# set backupdir ""
+set backupdir "~/.nano_backup"
 
 ## Do backwards searches by default.
 # set backwards
@@ -79,13 +79,13 @@ set historylog
 # set multibuffer
 
 ## Don't convert files from DOS/Mac format.
-# set noconvert
+set noconvert
 
 ## Don't follow symlinks when writing files.
 # set nofollow
 
 ## Don't display the helpful shortcut lists at the bottom of the screen.
-# set nohelp
+set nohelp
 
 ## Don't add newlines to the ends of files.
 # set nonewlines
