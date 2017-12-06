@@ -1,5 +1,31 @@
-host pcs
-    hostname pcserveur
+# Machine virtuelle
+host deb
+	HostName localhost
+	user raifer
+	Port 2224 
+
+host kali
+	HostName localhost
+	User root
+	Port 2223
+
+Host vme
+    User ensimag
+    HostName localhost
+    port 2022
+
+# Machine locale
+Host fixe
+User root
+
+Host home
+    HostName 90.112.174.4
+     Port 19198
+     User raifer
+ 
+Host pcs	
+    hostname pcserveur.ensimag.fr
+    User=barbem
 
 Host pcserveur
     ProxyCommand ssh -q barbem@depots.ensimag.fr nc %h 22
