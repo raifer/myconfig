@@ -22,6 +22,9 @@ alias rm='rm --preserve-root'
 alias hext='hexdump -e '\''8/1 "%02X " "\n"'\'' -e '\''8/1 "%c" "\n"'\'''
 # 16 octets par ligne
 alias hexd='hexdump -v -e '\''16/1 "%02x " "\n"'\'''
+
+alias gitb='git branch | grep \*'
+
 # editor
 export EDITOR="nano"
 
