@@ -19,4 +19,5 @@ sta = status -s
 
 
 
-
+credential]
+	helper = store
