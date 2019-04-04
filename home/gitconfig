@@ -19,5 +19,5 @@ sta = status -s
 
 
 
-credential]
+[credential]
 	helper = store
