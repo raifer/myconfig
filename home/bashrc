@@ -1,6 +1,15 @@
 # config perso
-# prompte sur deux lignes et seulement le nom du dossier courant
-export PS1='deb @\W\n'
+# prompte sur deux lignes coloré avec le résultat de la dernière commande
+# host @ nom du dossier
+pscolor()
+{
+    if [ "$?" == "0" ]; then
+        echo -e '\e[1;33;44m'
+    else
+        echo -e '\e[1;97;41m'
+    fi
+}
+export PS1='`pscolor`dub @\W                                                                                                              \e[0m\n'
 
 # alias
 ## ls
