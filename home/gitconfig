@@ -16,8 +16,13 @@ sta = status -s
  lgs = log --relative-date --abbrev-commit --name-only
  lgl = log --relative-date --abbrev-commit --name-status -1
  lgf = log --follow --abbrev-commit
-
+	lo = log --oneline
+	lol = log --oneline -1
 
 
 [credential]
 	helper = store
+
+[sendemail]
+	smtpserver = add.fr
+
