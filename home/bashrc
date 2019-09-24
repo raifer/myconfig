@@ -9,7 +9,7 @@ pscolor()
         echo -e '\e[1;97;41m'
     fi
 }
-export PS1='`pscolor`dub @\W                                                                                                              \e[0m\n'
+export PS1='`pscolor``hostname -s` @\W                                                                                                              \e[0m\n'
 
 # alias
 ## ls
