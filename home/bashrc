@@ -13,11 +13,11 @@ export PS1='`pscolor``hostname -s` @\W                                          
 
 # alias
 ## ls
-# ll
+### ll
 alias ll='ls -lrth'
-# la
+### la
 alias la='ls -a'
-# lss
+### lss
 alias lss='ls -1 -rt'
 
 ## hostname
@@ -33,7 +33,14 @@ alias hext='hexdump -e '\''8/1 "%02X " "\n"'\'' -e '\''8/1 "%c" "\n"'\'''
 alias hexd='hexdump -v -e '\''16/1 "%02x " "\n"'\'''
 
 ## Git
+### branch
 alias gitb='git branch | grep \*'
+
+### diff filter
+gdiff()
+{
+	git diff $* | grep  ^\+
+}
 
 ## Screen resume
 alias sr="screen -r"
@@ -41,7 +48,19 @@ alias sr="screen -r"
 ## emacs, revert color, pas utile pour la version 24
 #alias emacs='emacs -r'
 
-# man in editor
+## dmesg
+### tdm, tail dmesg
+alias tdm="dmesg -t debug | tail | sed -re 's/^(\[[^]]+\]) /\1\n/'"
+### dm
+alias dm="dmesg -t debug | sed -re 's/^(\[[^]]+\]) /\1\n/'"
+### ndm, nano
+alias ndm="dmesg -t debug | sed -re 's/^(\[[^]]+\]) /\1\n/' > /tmp/.ndm && nano /tmp/.ndm"
+### ntdm, nano avec les temps sur deux ligne
+alias ntdm="dmesg -T debug | sed -re 's/^(\[[^]]+\]) /\1\n/' > /tmp/.ndm && nano /tmp/.ndm"
+### cdm, clean 
+alias cdm="sudo dmesg -c > /dev/null"
+
+## man in editor
 man()
 {
 /usr/bin/man $* > ~/temp.txt
@@ -49,7 +68,8 @@ if [ -s ~/temp.txt ]; then nano ~/temp.txt
 fi
 }
 
-# out in nano with n command
+## Nano
+### out in nano with n command
 n()
 {
 $* > ~/.out.txt 2>1
@@ -57,7 +77,8 @@ if [ -s ~/.out.txt ]; then nano ~/.out.txt
 fi
 }
 
-# mk
+## Make
+### mk
 mk()
 {
 make $* 2> ~/.mk.txt 
@@ -65,15 +86,23 @@ if [ -s ~/.mk.txt ]; then nano ~/.mk.txt
 fi
 }
 
-
 # editor
 export EDITOR="nano"
 
 # umask definition
 #umask 7
 
+# Proxy
+function setproxy() {
+    export {http,https,ftp}_proxy='http://add.fr:8080'
+}
+
+function unsetproxy() {
+    unset {http,https,ftp}_proxy
+} 
+ 
 # path
-#add sbin
+##add sbin
 PATH="/sbin":$PATH
 
 
