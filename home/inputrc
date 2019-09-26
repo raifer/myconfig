@@ -1,0 +1,38 @@
+set show-all-if-ambiguous on
+set completion-ignore-case on
+TAB: menu-complete
+
+# M-l, Ajouter "| less" à la fin de la ligne
+"\el": "\C-e | less"
+# M-L, Remplacer le premier mot de la commande par less
+"\eL": "\C-a\eDless\C-e"
+# M-k, Remplacer le premier mot de la commande par ls
+"\eK": "\C-a\eDls\C-e"
+# M-s, Ajouter "sudo" au début de la ligne
+"\es": "\C-asudo \C-e"
+# M-p, Afficher un processus précis (place le curseur entre les quotes)
+# Attention : écrase M-p
+"\ep": '\C-a\C-kps aux | grep -i ""\C-b'
+# grep
+"\eg": '\C-e | grep -i ""\C-b\'
+"\eG": '\C-a\C-kgrep -ri "" .\C-b\C-b\C-b'
+# find (avec copie du résultat dans le clipboard, nécessite le paquet xclip)
+"\eF": '\C-a\C-kfind . -iname "**" | tee >(tr -d \'\\n\' | xclip)\C-a\ef\ef\C-f\C-f\C-f'
+# M-m, Ouvrir le man correspondant à la commande en cours
+# (remplace "commande args" par "man commande")
+"\em": '\C-aman \ef\C-k\n'
+# M-r, Copier une seconde fois le premier argument de la commande
+# (Ne fonctionne que pour des commandes simples)
+# Pratique lorsqu'on écrit "mv nom_de\ -\ fichier_\[\ complexe\] nom_de\ -\ fichier_\[\ complexe\].txt"
+"\er": '\C-a\ef\C-k\C-y\C-y'
+
+# M-a, ls dans un dmenu
+"\ea": ' \\\'$(ls | dmenu)\\\'\e\C-e'
+# M-:, Insert le fichier le plus récent
+"\e:": '\\\'$(ls -t -1 -d * | head -n 1)\\\' \e\C-e'
+
+# Directory
+"\e[1;3D": '\C-a\C-kcd_left\n'
+"\e[1;3C": '\C-a\C-kcd_right\n'
+"\e[1;3A": '\C-a\C-kcd_up\n'
+"\e[1;3B": '\C-a\C-kcd_down\n'
