@@ -106,4 +106,55 @@ function unsetproxy() {
 PATH="/sbin":$PATH
 
 
+# Directory nav
+alias cd_left='cd .. && ls'
+alias cd_right='cd "$(first_folder)" 2>/dev/null && ls'
+alias cd_up='cd "$(prev_folder)" 2>/dev/null && ls'
+alias cd_down='cd "$(next_folder)" 2>/dev/null && ls'
+
+prev_folder() {
+prev_dirs=$(ls -1 --group-directories-first ..)
+IFS=$'\n' dirs=($(ls -1 --group-directories-first ..))
+pos_dir=$(echo "$prev_dirs" | grep -n "^$(basename "$(pwd)")$" | perl -pe 's/^(\d+).*/\1/')
+pos_prev_dir=$(( $pos_dir - 2 ))
+prev_dir=../${dirs["$pos_prev_dir"]}
+if [ -d "$prev_dir" ]
+then
+echo "$prev_dir"
+else
+echo "/dev/null"
+fi
+}
+
+next_folder() {
+prev_dirs=$(ls -1 --group-directories-first ..)
+IFS=$'\n' dirs=($(ls -1 --group-directories-first ..))
+pos_dir=$(echo "$prev_dirs" | grep -n "^$(basename "$(pwd)")$" | perl -pe 's/^(\d+).*/\1/')
+#array start at 0, but grep starts numerotating at 1
+#Hence, there is no need to add 1
+next_dir=../${dirs["$pos_dir"]}
+if [ -d "$next_dir" -a "$next_dir" != "../" ]
+then
+echo "../${dirs["$pos_dir"]}"
+else
+echo "/dev/null"
+fi
+}
+
+first_folder() {
+first_dir=$(ls -1 --group-directories-first . | grep -m 1 "")
+if [ -d "$first_dir" ]
+then
+#without ./, the folder will put printed because of CDPATH
+echo "./$first_dir"
+else
+echo "/dev/null"
+fi
+}
+
+export HISTIGNORE="cd_*"
+
+
+
+
 cd
