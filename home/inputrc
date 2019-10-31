@@ -2,6 +2,9 @@ set show-all-if-ambiguous on
 set completion-ignore-case on
 TAB: menu-complete
 
+# Ouvrir le dossier courant dans l'explorateur de windows
+"\eo": '\C-a\C-kexplorer.exe .\C-m'
+
 # M-l, Ajouter "| less" à la fin de la ligne
 "\el": "\C-e | less"
 # M-L, Remplacer le premier mot de la commande par less
@@ -14,7 +17,7 @@ TAB: menu-complete
 # Attention : écrase M-p
 "\ep": '\C-a\C-kps aux | grep -i ""\C-b'
 # grep
-"\eg": '\C-e | grep -i ""\C-b\'
+"\eg": '\C-e | grep -i ""\C-b'
 "\eG": '\C-a\C-kgrep -ri "" .\C-b\C-b\C-b'
 # find (avec copie du résultat dans le clipboard, nécessite le paquet xclip)
 "\eF": '\C-a\C-kfind . -iname "**" | tee >(tr -d \'\\n\' | xclip)\C-a\ef\ef\C-f\C-f\C-f'
